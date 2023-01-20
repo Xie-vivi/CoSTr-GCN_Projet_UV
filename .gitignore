@@ -1,0 +1,12 @@
+*.zip
+*.rar
+lightning_logs
+__pycache__
+.ipynb_checkpoints
+tb_logs
+data/*
+Confusion_matrices/*
+models/*
+Data_Preprocessing.ipynb
+results*.json
+thresholds*.json
