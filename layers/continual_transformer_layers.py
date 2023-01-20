@@ -477,9 +477,9 @@ class PositionalEncoder(nn.Module, co.CoModule):
         
         # create constant 'pe' matrix with values dependant on z
         # pos and i
-        pe = torch.zeros(max_seq_len,20 , d_model)
+        pe = torch.zeros(max_seq_len,21 , d_model)
         for pos in range(max_seq_len):
-          for node_id in range(0,20) :
+          for node_id in range(0,21) :
             for i in range(0, d_model, 2):
                 pe[pos, node_id, i] = \
                 math.sin(pos / (10000 ** ((2 * i)/d_model)))
