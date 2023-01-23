@@ -197,7 +197,7 @@ def gendata(
         set_name,
         max_frame,
         window_size=20,
-        num_joint=20,
+        num_joint=21,
         aug_by_sw=False,
         is_segmented=False,
         binary_classes=False,
@@ -226,7 +226,7 @@ def gendata(
             for idx, gesture in enumerate(data_el):
                 current_skeletons_window = np.array(gesture[0])
                 label = gesture[1]
-                label = get_window_label(label)
+                label = get_window_label(label,len(feeder.classes))
                 windows_sub_sequences_data[label] = [
                     *windows_sub_sequences_data[label], *windows_sub_sequences_per_gesture[label]]
                 for sub_g in windows_sub_sequences_per_gesture[label] :

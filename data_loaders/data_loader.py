@@ -98,6 +98,9 @@ class GraphDataset(Dataset):
             self.data = data
             if self.sample_classes_:
                 self.sample_classes(self.nb_sub_sequences)
+                print("Number of gestures per class in the " +
+                      self.set_name+" set after data sampling:")
+                self.print_classes_information()
             if self.use_data_aug:
                 print("Augmenting data ....")
                 augmented_data = []
@@ -111,6 +114,7 @@ class GraphDataset(Dataset):
                 print("Number of gestures per class in the " +
                       self.set_name+" set after augmentation:")
                 self.print_classes_information()
+            
         else:
             self.data = self.gendata_function(
                 self.data_path,
@@ -448,11 +452,16 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
     if dataset_name.lower() == "ipn":
         from .ipn_loader import gendata
         layout = "IPN"
+        use_data_aug=False
+        sample_classes = True
+        use_aug_by_sw = False
         data_path = "./data/IPN"
         labels = ["D0X","B0A","B0B","G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","G11"]
     if dataset_name.lower() == "odhg":
         from .odhg_loader import gendata
         layout = "ODHG"
+        sample_classes = False
+
         data_path = "./data/ODHG2016"
         labels = ["NO_GESTURE",
                   "Grab",
@@ -472,6 +481,7 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
     if dataset_name.lower() == "shrec21":
         from .shrec21_loader import gendata
         layout = "SHREC21"
+        sample_classes = False
         data_path = "./data/SHREC21"
         labels = [
             "NO GESTURE",
@@ -508,8 +518,8 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
                             useScaleAug=False,
                             useTranslationAug=False,
                             use_aug_by_sw=use_aug_by_sw,
-                            sample_classes=False,
-                            number_of_samples_per_class=200,
+                            sample_classes=sample_classes,
+                            number_of_samples_per_class=150,
                             is_segmented=is_segmented, binary_classes=binary_classes
                             )
     test_ds = GraphDataset(data_path, "test", labels, gendata_function=gendata,
