@@ -165,11 +165,6 @@ def training_loop(model_params, training_params, num_classes, dataset_name="SHRE
     torch.cuda.empty_cache()
     plt.figure(figsize=(15, 8))
     plot_history(history.history, "CoSTrGCN")
-
-    test_results=testing(checkpoint_callback.best_model_path, test_loader, adjacency_matrix, labels, num_classes, d_model=128, n_heads=8, dropout_rate=.3)
-    print(test_results)
-
-
     def testing(best_model_path, test_loader, adjacency_matrix, labels, num_classes, d_model=128, n_heads=8, dropout_rate=.3):
         is_continual=False
         memory_size=50
@@ -178,3 +173,7 @@ def training_loop(model_params, training_params, num_classes, dataset_name="SHRE
         model.eval()
         test_metrics = trainer.test(model, dataloaders=test_loader)
         return test_metrics
+    test_results=testing(checkpoint_callback.best_model_path, test_loader, adjacency_matrix, labels, num_classes, d_model=128, n_heads=8, dropout_rate=.3)
+    print(test_results)
+
+
