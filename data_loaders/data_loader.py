@@ -452,7 +452,7 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
     if dataset_name.lower() == "ipn":
         from .ipn_loader import gendata
         layout = "IPN"
-        use_data_aug=False
+        use_data_aug=True
         sample_classes = True
         use_aug_by_sw = False
         data_path = "./data/IPN"

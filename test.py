@@ -5,7 +5,7 @@ if __name__ == "__main__":
     batch_size = 32
     window_size = 30
     is_gesture_nogesture_model = False
-    num_classes = 2 if is_gesture_nogesture_model else 18
+    num_classes = 2 if is_gesture_nogesture_model else 14
     d_model = 128
     n_heads = 8
     Max_Epochs = 500
