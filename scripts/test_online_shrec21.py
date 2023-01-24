@@ -1,4 +1,4 @@
-from utils import online_test_loop
+from utils.online_evaluation_utils import online_test_loop
 
 
 

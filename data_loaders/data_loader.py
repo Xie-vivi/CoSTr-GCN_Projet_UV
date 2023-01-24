@@ -547,7 +547,7 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
         num_workers=workers, pin_memory=False)
     test_loader = torch.utils.data.DataLoader(
         test_ds,
-        batch_size=1, shuffle=False,
+        batch_size=batch_size, shuffle=False,
         num_workers=workers, pin_memory=False)
 
     return train_loader, val_loader, test_loader, torch.from_numpy(graph.A), labels

@@ -135,7 +135,7 @@ def init_data_loader(window_size, dataset_name, batch_size=32, workers=4):
         window_size=window_size,
         batch_size=batch_size,
         workers=workers,
-        is_segmented=False,
+        is_segmented=True,
         binary_classes=False,
         use_data_aug=False,
         use_aug_by_sw=False
@@ -176,8 +176,8 @@ def online_test_loop(model_path,
 
     # .........inital model
     print("\n loading model.............")
-    model = load_model(model_path, graph, memory_size,
-                       labels, num_classes, dropout_rate, d_model, num_heads)
+    # model = load_model(model_path, graph, memory_size,
+    #                    labels, num_classes, dropout_rate, d_model, num_heads)
 
     # model_solver = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
 

@@ -130,7 +130,7 @@ class Feeder_IPN(Dataset):
             
             gestures = []
             windows_sub_sequences_per_gesture = {
-                i+1: [] for i in range(len(self.classes))}
+                i: [] for i in range(len(self.classes))}
 
             for gesture_start, gesture_end, gesture_label in gesture_infos:
                 if gesture_label == 0:
