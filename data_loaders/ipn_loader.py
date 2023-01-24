@@ -54,7 +54,6 @@ class Feeder_IPN(Dataset):
                 gesture_end = int(fields[-2])-1
                 gesture_label = int(fields[-4]) -1
                 if (file_getsture.__contains__(seq_idx)):
-                    
                     file_getsture[seq_idx].append((gesture_start, gesture_end, gesture_label))
                 else:
                     file_getsture[seq_idx] = [(gesture_start, gesture_end, gesture_label)]
