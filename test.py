@@ -1,4 +1,4 @@
-from utils1 import training_loop
+from utils.training_tools import training_loop
 
 
 if __name__ == "__main__":
