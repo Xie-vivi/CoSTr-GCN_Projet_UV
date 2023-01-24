@@ -5,7 +5,7 @@ __pycache__
 .ipynb_checkpoints
 tb_logs
 Confusion_matrices/*
-models/*
+#models/*
 Data_Preprocessing.ipynb
 results*.json
 thresholds*.json
