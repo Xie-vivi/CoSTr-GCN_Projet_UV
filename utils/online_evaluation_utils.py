@@ -232,8 +232,8 @@ def online_test_loop(model_path,
 
                 score_list_labels = torch.argmax(prob, dim=-1)
 
-                if prob[0][score_list_labels[0].item()] < thresholds[str(score_list_labels[0].item())]['threshold_avg']:
-                    score[0][0] = 10.
+                # if prob[0][score_list_labels[0].item()] < thresholds[str(score_list_labels[0].item())]['threshold_avg']:
+                #     score[0][0] = 10.
                 exec_time = toc()
                 exec_time_total += exec_time
                 prob = torch.nn.functional.softmax(score, dim=-1)

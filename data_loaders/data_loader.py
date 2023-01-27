@@ -84,7 +84,7 @@ class GraphDataset(Dataset):
                 self.is_segmented,
                 self.binary_classes
             )
-            self.sample_no_gesture_class()
+            # self.sample_no_gesture_class()
             print("Number of gestures per class in the original " +
                   self.set_name+" set :")
             self.print_classes_information()
@@ -151,8 +151,7 @@ class GraphDataset(Dataset):
             data_dict[label].append((seq, label))
 
         for k in data_dict.keys():
-            samples = data_dict[k][:self.number_of_samples_per_class if k !=
-                                   0 else self.number_of_samples_per_class * 3]
+            samples = data_dict[k][:self.number_of_samples_per_class]
             if self.use_aug_by_sw:
                 samples = [
                     *samples, *self.gesture_sub_sequences_data[k][:nb_sub_sequences]]
@@ -450,13 +449,18 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
     print(dataset_name)
     labels = []
     if dataset_name.lower() == "ipn":
-        from .ipn_loader import gendata
+        use_no_gesture = False
+        if use_no_gesture:
+            from .ipn_loader import gendata
+            labels = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
+        else:
+            from .ipn_without_noGesture_loader import gendata
+            labels = ["B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
         layout = "IPN"
         use_data_aug=True
         sample_classes = True
         use_aug_by_sw = False
         data_path = "./data/IPN"
-        labels = ["D0X","B0A","B0B","G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","G11"]
     if dataset_name.lower() == "odhg":
         from .odhg_loader import gendata
         layout = "ODHG"
