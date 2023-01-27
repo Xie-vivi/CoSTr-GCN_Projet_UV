@@ -454,7 +454,7 @@ def load_data_sets(dataset_name="SHREC21", window_size=10, batch_size=32, worker
             from .ipn_loader import gendata
             labels = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
         else:
-            from .ipn_without_noGesture_loader import gendata
+            from .ipn_without_no_gesture_loader import gendata
             labels = ["B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
         layout = "IPN"
         use_data_aug=True
