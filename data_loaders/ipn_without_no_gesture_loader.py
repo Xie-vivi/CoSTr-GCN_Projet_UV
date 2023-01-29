@@ -48,8 +48,8 @@ class Feeder_IPN(Dataset):
                 seq_idx = fields[0] # file name
                 # gestures = fields[1:-1] # 
                 # nb_gestures = len(gestures) // 3
-                gesture_start = int(fields[-3])-2
-                gesture_end = int(fields[-2])-2
+                gesture_start = int(fields[-3])-1
+                gesture_end = int(fields[-2])-1
                 gesture_label = int(fields[-4])-2
                 if gesture_label<0:
                     continue
